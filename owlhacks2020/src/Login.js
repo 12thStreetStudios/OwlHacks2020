@@ -62,9 +62,27 @@ class LoginContextProvider extends React.Component {
     return login.data;
   }
 
+  // Logs in as guest
+  guestLogin = async (e) => {
+    console.log("Logging in as Guest");
+    this.setState({
+      ...this.state,
+      isAuth: true,
+      thisUser: {name:'guest', email:'guest', token:'guest'}
+    });
+    localStorage.setItem('loginToken', 'guest');
+    this.isLoggedIn();
+    return this.state.thisUser;
+  }
+
   // Check if user is logged in
   isLoggedIn = async () => {
     const token = localStorage.getItem('loginToken');
+    if (token === 'guest') {
+      console.log('Guest attempt to check login');
+      return;
+    }
+
     // Check if local storage contains the token
     if (token) {
       // Add token to the header
@@ -90,7 +108,8 @@ class LoginContextProvider extends React.Component {
       isLoggedIn:this.isLoggedIn,
       register:this.register,
       login:this.login,
-      logout:this.logout
+      logout:this.logout,
+      guestLogin:this.guestLogin
     }
     return(
       <LoginContext.Provider value={contextValue}>
@@ -101,7 +120,7 @@ class LoginContextProvider extends React.Component {
 }
 
 function Login() {
-  const {toggleNav, login, isLoggedIn} = React.useContext(LoginContext);
+  const {toggleNav, login, isLoggedIn, guestLogin} = React.useContext(LoginContext);
 
   const initialState = {
     userInfo:{
@@ -176,12 +195,15 @@ function Login() {
       <div className="navBtn">
         <button onClick={toggleNav}>Register</button>
       </div>
+      <div className="navBtn">
+        <button onClick={guestLogin}>Login As Guest</button>
+      </div>
     </div>
   );
 }
 
 function Register() {
-  const {toggleNav, register} = React.useContext(LoginContext);
+  const {toggleNav, register, guestLogin} = React.useContext(LoginContext);
 
   const initialState = {
     userInfo:{
@@ -294,6 +316,9 @@ function Register() {
       </form>
       <div className="navBtn">
         <button onClick={toggleNav}>Login</button>
+      </div>
+      <div className="navBtn">
+        <button onClick={guestLogin}>Login As Guest</button>
       </div>
     </div>
   );

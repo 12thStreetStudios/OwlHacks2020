@@ -12,7 +12,7 @@ import Project from './components/Project';
 function App() {
   return (
     <LoginContextProvider>
-      <Home />
+      <Home/>
     </LoginContextProvider>
   );
 }
