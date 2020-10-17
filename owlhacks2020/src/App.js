@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
-
 import './style/App.css';
+
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 import Title from './components/Title'
 import Post from './components/Post'
@@ -23,6 +23,14 @@ function Home() {
 
   if (isAuth)
   {
+    // Add floating post button
+    function floatingMenuClick() {
+      // Show new post menu
+      console.log("Showing New Post Menu");
+    }
+    var floatingMenu = <div class="float" onClick={floatingMenuClick}><i class="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
+
+    // build posts here
     var posts = [];
     posts.push(<Post title="First Post" poster="Jimmy" organization="12th Street"/>);
     posts.push(<Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>);
@@ -33,6 +41,7 @@ function Home() {
         <header className="App-header">
           <Wall posts={posts}/>
         </header>
+        {floatingMenu}
       </div>
     );
   }
