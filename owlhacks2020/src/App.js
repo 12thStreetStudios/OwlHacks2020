@@ -28,7 +28,7 @@ function Home() {
       // Show new post menu
       console.log("Showing New Post Menu");
     }
-    var floatingMenu = <div class="float" onClick={floatingMenuClick}><i class="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
+    var floatingMenu = <div class="float" onClick={floatingMenuClick}><i className="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
 
     // build posts here
     var posts = [];
