@@ -1,6 +1,6 @@
 import React, {createContext} from 'react';
 import axios from 'axios';
-import './style/Login.css';
+import '../style/Login.css';
 
 // Don't know why they need this
 export const LoginContext = createContext();

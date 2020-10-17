@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 
 import './style/App.css';
-import {LoginContextProvider, LoginContext, Login, Register} from'./Login.js'
+import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 
 import Title from './components/Title'
 import Post from './components/Post'
