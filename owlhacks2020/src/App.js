@@ -4,10 +4,10 @@ import logo from './logo.svg';
 
 import './style/App.css';
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
-
 import Title from './components/Title'
 import Post from './components/Post'
 import Project from './components/Project';
+import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 
 function App() {
   return (
@@ -23,14 +23,15 @@ function Home() {
 
   if (isAuth)
   {
+    var posts = [];
+    posts.push(<Post title="First Post" poster="Jimmy" organization="12th Street"/>);
+    posts.push(<Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>);
+    posts.push(<Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>);
+
     return (
       <div className="App">
         <header className="App-header">
-          <div className="posts">
-            <Post title="First Post" poster="Jimmy" organization="12th Street"/>
-            <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>
-            <Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>
-          </div>
+          <Wall posts={posts}/>
         </header>
       </div>
     );
