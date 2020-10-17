@@ -1,0 +1,124 @@
+/* css for Login Form from Login.js */
+.userInfo,
+.login-form {
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+  border-radius: 3px;
+  box-shadow: 0 1px rgba(255, 255, 255, .2) inset, 0 2px 2px -1px rgba(0, 0, 0, .3);
+}
+
+.login-form h1{
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.login-form .form-control {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.login-form .form-control label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+[type="text"],
+[type="email"],
+[type="password"] {
+  padding: 7px 10px;
+  outline: none;
+  margin-bottom: 5px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid rgba(0, 0, 0, .3);
+}
+
+[type="text"]:hover,
+[type="text"]:focus,
+[type="email"]:hover,
+[type="email"]:focus,
+[type="password"]:hover,
+[type="password"]:focus {
+  border-color: #107a8b;
+}
+
+.navBtn button,
+[type="submit"] {
+  background: #ff4840;
+  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 2px;
+  margin-top: 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  outline: none;
+}
+
+.navBtn button:hover,
+[type="submit"]:hover{
+  opacity: .9;
+}
+
+.navBtn{
+  border-top: 1px solid #dedede;
+  margin-top: 5px;
+}
+
+.navBtn button{
+  background: #555555;
+  color: #ffffff;
+  width: 100%;
+}
+
+.success-msg,
+.error-msg{
+  border: 1px solid #ff304f;
+  padding: 10px;
+  color: #ff304f;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.success-msg{
+  color: #24b273;
+  border-color: #24b273;
+}
+
+.userInfo{
+  text-align: center;
+}
+
+.userInfo h1{
+  text-transform: capitalize;
+  margin: 10px 0;
+}
+
+.userInfo ._email{
+  margin: 10px 0;
+  color: #555555;
+}
+
+.userInfo button{
+    margin-top: 5px;
+    background: #ff304f;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 5px solid rgba(0, 0, 0, .1);
+    outline: none;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.userInfo button:hover{
+  border-color: #ff304f;
+  color: #ff304f;
+  background: #ffffff;
+}
