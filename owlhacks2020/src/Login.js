@@ -110,4 +110,85 @@ class LoginContextProvider extends React.component {
   }
 }
 
+function Login() {
+  const {toggleNav, login, isLoggedIn} = React.useContext(LoginContext);
+
+  const initialState = {
+    userInfo:{
+      email:'',
+      password:'',
+    },
+    errorMsg:'',
+    successMsg:''
+  }
+
+  const [state, setState] = React.useState(initialState);
+
+  // On input value change, event
+  const onValueChange = (e) => {
+    setState({
+      ...state,
+      userInfo:{
+        ...state.userInfo,
+        [e.target.name]:e.target.value
+      }
+    });
+  }
+
+  // On Submit of Login Form
+  const submit = async (event) => {
+    event.preventDefault();
+    const data = await login(state.userInfo);
+    // If successful login
+    if (data.success && data.token) {
+      setState({
+        ...initialState,
+      });
+      localStorage.setItem('loginToken', data.token);
+      await isLoggedIn();
+    } else {
+      setState({
+        ...state,
+        successMsg:'',
+        errorMsg:data.message
+      });
+    }
+  }
+
+  // Show Message on Error or Success
+  let successMsg = '';
+  let errorMsg = '';
+  if (state.errorMsg) {
+    errorMsg = <div className="error-msg">{state.errorMsg}</div>;
+  }
+  if (state.successMsg) {
+    successMsg = <div className="success-msg">{state.successMsg}</div>;
+  }
+
+  return (
+    <div className="login-form">
+      <h1>Login</h1>
+      <form onSubmit={submit} noValidate>
+        <div className="form-control">
+          <label>Email</label>
+          <input name="email" type="email" required placeholder="Enter your email" value={state.userInfo.email} onChange={onValueChange} />
+        </div>
+        <div className="form-control">
+          <label>Password</label>
+          <input name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onValueChange}/>
+        </div>
+        {errorMsg}
+        {successMsg}
+        <div className="form-control">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      <div className="navBtn">
+        <button onClick={toggleNav}>Register</button>
+      </div>
+    </div>
+  );
+}
+
 export default LoginContext;
+export default Login;
