@@ -1,14 +1,7 @@
 import React, {useContext} from 'react';
-import ReactDOM from 'react-dom';
-import logo from './logo.svg';
-
 import './App.css';
 import {LoginContextProvider, LoginContext, Login, Register} from'./Login.js'
-
-import Title from './components/Title'
 import Post from './components/Post'
-import Project from './components/Project';
-import User from './components/User'
 
 function App() {
   return (
