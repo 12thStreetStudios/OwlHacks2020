@@ -7,6 +7,7 @@ import Post from './components/Post'
 function App() {
   return(
     <div className="App">
+      < Title />
       <header className="App-header">
         <Post title="First Post" poster="Jimmy" organization="12th Street"/>
         <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>
