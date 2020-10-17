@@ -4,6 +4,7 @@ import './App.css';
 import Title from './components/Title'
 import Post from './components/Post'
 import Project from './components/Project';
+import User from './components/User'
 
 function App() {
   return(
@@ -13,8 +14,10 @@ function App() {
         <Post title="First Post" poster="Jimmy" organization="12th Street"/>
         <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>
         <Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>
-        <Project pname="OwlHacks2020" members="Sean, Jimmy, Russell" creation_date="10/17/20" todo_list="stuff"></Project> 
+        <Project pname="OwlHacks2020" members="Sean, Jimmy, Russell" creation_date="10/17/20" todo_list="stuff"></Project>
+        
       </header>
+      <User />
     </div>
   );
 }
