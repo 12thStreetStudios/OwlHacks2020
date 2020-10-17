@@ -1,0 +1,42 @@
+.post {
+    border: solid;
+    width: 95%;
+    margin: 5px;
+    padding: 8px;
+    background-color: darkgrey;
+    height: 10rem;
+}
+
+.post:hover {
+  background-color: darkblue;
+}
+
+.post h3 {
+  text-align: left;
+  float: left;
+  vertical-align: top;
+}
+
+#poster {
+  color: grey;
+  font-size: 15;
+  text-align: left;
+  clear: both;
+}
+
+/* On Hover, as users may link to the page */
+#poster a:hover {
+  color: darkgrey;
+  text-decoration: underline;
+}
+
+#organization {
+  float: right;
+  text-align: right;
+  color: grey;
+}
+
+#organization a:hover {
+  color: darkgrey;
+  text-decoration: underline;
+}
