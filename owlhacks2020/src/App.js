@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-import {Login, LoginContext} from'./Login.js'
+import {LoginContextProvider, LoginContext, Login, Register} from'./Login.js'
 
 function App() {
-  const {rootState,logout} = React.useContext(LoginContext);
+  return (
+    <LoginContextProvider>
+      <Home />
+    </LoginContextProvider>
+  );
+}
+
+function Home() {
+  const {rootState, logout} = useContext(LoginContext);
   const {isAuth, thisUser, showLogin} = rootState;
 
   if (isAuth)

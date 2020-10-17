@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import axios from 'axios';
 import './Login.css';
 
 // Don't know why they need this
-export const LoginContext = react.createContext();
+export const LoginContext = createContext();
 const Axios = axios.create({
   baseURL: 'login-url',
 });
 
-class LoginContextProvider extends React.component {
+class LoginContextProvider extends React.Component {
   constructor() {
     super();
     this.isLoggedIn();
@@ -21,16 +21,6 @@ class LoginContextProvider extends React.component {
     thisUser:null,
   }
 
-  show = () =>{
-    this.setState({
-      showLogin: true
-    })
-  }
-  hide = () => {
-    this.setState({
-      showLogin: false
-    })
-  }
   // Toggle between Login & Sign in
   toggleNav = () => {
     // Flip state
@@ -190,5 +180,88 @@ function Login() {
   );
 }
 
-export default LoginContext;
-export default Login;
+function Register() {
+  const {toggleNav, register} = React.useContext(LoginContext);
+
+  const initialState = {
+    userInfo:{
+      name:'',
+      email:'',
+      password:'',
+    },
+    errorMsg:'',
+    successMsg:''
+  }
+
+  const [state, setState] = React.useState(initialState);
+
+  // On input value change, event
+  const onValueChange = (e) => {
+    setState({
+      ...state,
+      userInfo:{
+        ...state.userInfo,
+        [e.target.name]:e.target.value
+      }
+    });
+  }
+
+  // On Submit of Login Form
+  const submit = async (event) => {
+    event.preventDefault();
+    const data = await register(state.userInfo);
+    // If successful login
+    if (data.success) {
+      setState({
+        ...initialState,
+        successMsg:data.message
+      });
+      } else {
+      setState({
+        ...state,
+        successMsg:'',
+        errorMsg:data.message
+      });
+    }
+  }
+
+  // Show Message on Error or Success
+  let successMsg = '';
+  let errorMsg = '';
+  if (state.errorMsg) {
+    errorMsg = <div className="error-msg">{state.errorMsg}</div>;
+  }
+  if (state.successMsg) {
+    successMsg = <div className="success-msg">{state.successMsg}</div>;
+  }
+
+  return (
+    <div className="login-form">
+      <h1>Sign Up</h1>
+      <form onSubmit={submit} noValidate>
+        <div className="form-control">
+          <label>Username</label>
+          <input name="name" required type="text" value={state.userInfo.name} onChange={onValueChange} placeholder="Enter you username" />
+        </div>
+        <div className="form-control">
+          <label>Email</label>
+          <input name="email" type="email" required placeholder="Enter your email" value={state.userInfo.email} onChange={onValueChange} />
+        </div>
+        <div className="form-control">
+          <label>Password</label>
+          <input name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onValueChange}/>
+        </div>
+        {errorMsg}
+        {successMsg}
+        <div className="form-control">
+          <button type="submit">Register User</button>
+        </div>
+      </form>
+      <div className="navBtn">
+        <button onClick={toggleNav}>Login</button>
+      </div>
+    </div>
+  );
+}
+
+export {LoginContextProvider, Login, Register};
