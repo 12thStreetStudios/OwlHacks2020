@@ -209,6 +209,37 @@ function Register() {
   // On Submit of Login Form
   const submit = async (event) => {
     event.preventDefault();
+
+    // Check Username field
+    if (state.userInfo.name === "" || state.userInfo.name === null) {
+      setState({
+        ...state,
+        successMsg:'',
+        errorMsg:'Name field empty or missing.'
+      });
+      return;
+    }
+
+    // Check Email
+    if (state.userInfo.email !== state.userInfo.confirmEmail || state.userInfo.email === '' || !state.userInfo.email) {
+      setState({
+        ...state,
+        successMsg:'',
+        errorMsg:'Could not confirm Email.'
+      });
+      return;
+    }
+
+    // Check Password field
+    if (state.userInfo.password === "" || state.userInfo.password === null) {
+      setState({
+        ...state,
+        successMsg:'',
+        errorMsg:'Password field empty or missing.'
+      });
+      return;
+    }
+
     const data = await register(state.userInfo);
     // If successful login
     if (data.success) {
@@ -246,6 +277,10 @@ function Register() {
         <div className="form-control">
           <label>Email</label>
           <input name="email" type="email" required placeholder="Enter your email" value={state.userInfo.email} onChange={onValueChange} />
+        </div>
+        <div className="form-control">
+          <label>Confirm Email</label>
+          <input name="confirmEmail" type="email" required placeholder="Re-type your email" value={state.userInfo.confirmEmail} onChange={onValueChange} />
         </div>
         <div className="form-control">
           <label>Password</label>
