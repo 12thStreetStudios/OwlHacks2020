@@ -4,11 +4,16 @@
     margin:5px;
     
 }
-
-h2 {
-    text-align: left;
-
-}
-p {
+.username {
     text-align: left;
 }
+.email {
+    text-align: left;
+}
+.acc_creation {
+    text-align: left;
+}
+.num_comments {
+    text-align: left;
+}
+
