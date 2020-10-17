@@ -4,7 +4,7 @@
   background-color: #ffffff;
   padding: 20px;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 40px auto;
   border-radius: 3px;
   box-shadow: 0 1px rgba(255, 255, 255, .2) inset, 0 2px 2px -1px rgba(0, 0, 0, .3);
 }
@@ -32,8 +32,8 @@
   outline: none;
   margin-bottom: 5px;
   font-size: 16px;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 3px;
+  border: 2px solid rgba(0, 0, 0, .3);
 }
 
 [type="text"]:hover,
@@ -47,7 +47,7 @@
 
 .navBtn button,
 [type="submit"] {
-  background: #ff4873;
+  background: #ff4840;
   color: #ffffff;
   border: 1px solid rgba(0, 0, 0, .1);
   padding: 10px;
