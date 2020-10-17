@@ -3,12 +3,12 @@ import axios from 'axios';
 import './Login.css';
 
 // Don't know why they need this
-export const MyContext = createContext();
+export const LoginContext = react.createContext();
 const Axios = axios.create({
   baseURL: 'login-url',
 });
 
-class Login extends React.component {
+class LoginContextProvider extends React.component {
   constructor() {
     super();
     this.isLoggedIn();
@@ -91,4 +91,23 @@ class Login extends React.component {
       }
     }
   }
+
+  // render function
+  render() {
+    const contextValue = {
+      rootState:this.state,
+      toggleNav:this.toggleNav,
+      isLoggedIn:this.isLoggedIn,
+      register:this.register,
+      login:this.login,
+      logout:this.logout
+    }
+    return(
+      <LoginContext.Provider value={contextValue}>
+        {this.props.children}
+      </LoginContext.Provider>
+    )
+  }
 }
+
+export default LoginContext;

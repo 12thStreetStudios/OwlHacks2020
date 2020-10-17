@@ -1,15 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import '.Login.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div id="sidenav" class="sidenav">
-          <a href=
-        </div>
         <div className="posts">
           <Post title="First Post" poster="Jimmy" organization="12th Street"/>
           <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>
