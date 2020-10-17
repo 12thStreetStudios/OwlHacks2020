@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import React, {useContext} from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
