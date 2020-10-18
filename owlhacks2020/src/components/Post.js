@@ -14,7 +14,7 @@ class Post extends React.Component {
     }
 
     onClick = () => {
-      if (this.state.expanded === 'none'){
+      if (this.state.comments.length > 0 && this.state.expanded === 'none'){
         this.setState({...this.state, expanded: 'expanded'});
       } else {
         this.setState({...this.state, expanded: 'none'})
