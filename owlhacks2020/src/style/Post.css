@@ -63,6 +63,7 @@
   flex: 1;
   height: 40%;
   margin: 5px;
+  font-size: 32px;
 }
 
 .comment p {
@@ -71,9 +72,17 @@
   text-align: left;
   vertical-align: middle;
   height: 30%;
+  font-size: 24px;
 }
 
-li {
-  margin: 0px 0px -20px 0px;
+.fakelist {
   padding: 2px;
+  font-size: 0px;
+}
+
+.none {
+  display: none;
+}
+.expanded {
+  display: block;
 }

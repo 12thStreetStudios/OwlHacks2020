@@ -17,7 +17,7 @@ import Project from './components/Project';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 
 export default function App() {
-  
+
   return (
     <Router>
       <div>
@@ -44,7 +44,7 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-            
+
           <Route path="/Signin">
             <LoginContextProvider>
               <Signin />
@@ -99,7 +99,7 @@ function Home() {
 
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header">        
           <Wall posts={posts}/>
         </header>
         {floatingMenu}
@@ -123,7 +123,7 @@ function About() {
 }
 
 function Organizations() {
-  
+
   let match = useRouteMatch();
 
   return (
