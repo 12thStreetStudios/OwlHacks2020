@@ -19,6 +19,7 @@ import Organizations from './components/Organizations';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 import NewPost from './components/NewPost.js'
 import About from './components/About'
+import Axios from 'axios';
 
 
 export default function App() {
@@ -190,7 +191,7 @@ function Users() {
 
 function Profile(username) {
   // TODO: search database function
-
+  Axios.get("https://tss-api.srnd.net/user/getUserByID")
   // TODO: get User data
 
   const user = { name: 'Johnny', email: 'johnny@comcast.net', group: 'Oregon Orators'};
