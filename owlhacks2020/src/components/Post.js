@@ -27,13 +27,13 @@ class Post extends React.Component {
           <div className="flexbox">
             <div className="post" onClick={this.onClick}>
             <h3>{this.props.title}</h3>
-            <body>
+            <div>
               {/* TODO: Add organization href link */}
               <p className="organization"><a>{this.props.organization}</a></p>
               {/* TODO: Add user href link*/}
               <p className="poster">Posted by: <a>{this.props.poster}</a></p>
               <p className="commentCount">Comments: {this.state.comments.length}</p>
-            </body>
+            </div>
           </div>
           <div className="comment-block">
             <div key={this.props.poster + this.state.id} className={this.state.expanded}>
