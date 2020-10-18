@@ -11,6 +11,7 @@ import ReactDOM from 'react-dom';
 
 import './style/App.css';
 import './style/Profile.css';
+import './style/Nav.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 import Post, {Comment} from './components/Post'
@@ -25,14 +26,14 @@ export default function App() {
     <Router>
       <div>
         <nav>
-          <ul>
-              <Link to="/"> Wall </Link>
-              <Link to="/login"> Login </Link>
-              <Link to="/about"> About </Link>
-              <Link to="/orgs"> Organizations </Link>
-              <Link to="/user"> Users </Link>
-              <Link to="/profile"> Profile </Link>
-          </ul>
+          <div className = "navcontainer">
+              <div className="navbar"> <Link to="/"> Wall </Link> </div>
+              <div className="navbar"> <Link to="/login"> Login </Link></div>
+              <div className="navbar"> <Link to="/about"> About </Link></div>
+              <div className="navbar"><Link to="/orgs"> Organizations </Link></div>
+              <div className="navbar"> <Link to="/user"> Users </Link></div>
+              <div className="navbar"> <Link to="/profile"> Profile </Link></div>
+          </div>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -176,7 +177,7 @@ function Users() {
         </Route>
         <Route path={match.path}>
             <h3 className="search">Search User:
-              <form action="">  
+              <form action="">
                 <input type="text" name="user" size="12" />
                 <input type="submit" name="button" value="Search" />
               </form>
