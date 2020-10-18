@@ -1,13 +1,13 @@
 .post {
     border: solid;
-    width: 100%;
+    width: 99%;
     margin-bottom: 6px;
-    
+
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
     height: 7rem;
-    display: block;
     user-select: none;
+    border-radius: 6px;
 }
 
 .post:hover {
@@ -32,13 +32,16 @@
   font-size: 6;
   text-align: left;
   clear: both;
+  padding-bottom: 4px;
 }
 
 .commentCount {
   color: black;
-  font-size: 6;
-  text-align: left;
-  clear: both;
+  font-size: 20px;
+  text-align: right;
+  position: relative;
+  margin-top: -58px;
+  padding-right: 10px;
 }
 
 /* On Hover, as users may link to the page */
@@ -50,10 +53,12 @@
 .organization {
   float: right;
   text-align: right;
+  vertical-align: top;
   color: black;
   background-color: darkcyan;
   border-radius: 6px;
   padding: 4px;
+  padding-right: 10px;
 }
 
 .organization a:hover {
@@ -62,21 +67,20 @@
 }
 
 .comment {
-  width: 80%;
+  width: 60rem;
   border: solid;
   margin-top: 10px;
   height: 30px;
- 
   color: black;
-  display: flex;
   font-size: 16px;
   user-select: none;
+  flex: 1;
+  margin-right: 100px;
 }
 
 .comment .poster {
   text-align: right;
   flex: 1;
-  height: 40%;
   margin: 5px;
   font-size: 10px;
 }
@@ -85,21 +89,27 @@
   color: black;
   text-align: left;
   vertical-align: middle;
-  
+
 
   font-size: 10px;
 }
 
 .fakelist {
   padding: 2px;
-  font-size: 0px;
+  flex-flow: row;
 }
 
 .none {
   display: none;
 }
+
 .expanded {
-  display: block;
+  display: flex;
+}
+
+.flexbox {
+  display: flex;
+  flex-flow: column;
 }
 
 .post-form {
@@ -136,6 +146,11 @@
   align-self: right;
 }
 
+.comment-block {
+  display: block;
+  width: 80%;
+}
+
 .words {
   padding: 8px;
   text-align: left;
@@ -147,3 +162,4 @@
   float: left;
   padding: 10px;
 }
+
