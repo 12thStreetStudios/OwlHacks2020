@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import './style/App.css';
+import './style/Profile.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 import Title from './components/Title'
@@ -209,10 +210,10 @@ function Profile(username) {
 
   const user = { name: 'Johnny', email: 'johnny@comcast.net', group: 'Oregon Orators'};
   const outputJSX = Object.keys(user).map( (k,v) =>
-    <div><p>{k}: {user[k]}</p></div>
+    <div key={k}><p>{k}: {user[k]}</p></div>
   );
   return (
-    <div className="userPage">
+    <div className="profile-page">
       {outputJSX}
     </div>
   );
