@@ -150,7 +150,9 @@ function Organizations() {
           <Organization />
         </Route>
         <Route path={match.path}>
-          <h3>Please select an Organization.</h3>
+        <h3>Search User: 
+          <input type="text" name="user" size="15" />
+        </h3>
         </Route>
       </Switch>
     </div>
@@ -177,7 +179,9 @@ function Users() {
           <Username />
         </Route>
         <Route path={match.path}>
-          <h3>Please select a Username.</h3>
+            <h3>Search User: 
+              <input type="text" name="user" size="15" />
+            </h3>
         </Route>
       </Switch>
     </div>
