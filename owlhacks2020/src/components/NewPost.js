@@ -40,7 +40,7 @@ class NewPost extends React.Component {
           </div>
           <div className="form-control">
             <label>Description</label>
-            <input name="description" type="textbox" required placeholder="Enter your email" value={this.state.post.desc} onChange={this.onValueChange} />
+            <textarea name="description" type="text" required placeholder="Short Description" value={this.state.post.desc} onChange={this.onValueChange} />
           </div>
           <div className="form-control">
             <button type="submit">Submit</button>
