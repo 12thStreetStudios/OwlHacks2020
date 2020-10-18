@@ -122,8 +122,10 @@ function Home() {
         </div>
       );
   }
-  else {
-    return Login();
+  else if (showLogin){
+    return <Login/>;
+  } else {
+    return <Register />;
   }
 }
 
@@ -157,7 +159,7 @@ function Orgs() {
           <Organization />
         </Route>
         <Route path={match.path}>
-        <h3>Search User: 
+        <h3>Search User:
           <input type="text" name="user" size="15" />
         </h3>
         </Route>
@@ -186,7 +188,7 @@ function Users() {
           <Username />
         </Route>
         <Route path={match.path}>
-            <h3>Search User: 
+            <h3>Search User:
               <input type="text" name="user" size="15" />
             </h3>
         </Route>
