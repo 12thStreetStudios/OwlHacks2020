@@ -27,7 +27,7 @@ class Post extends React.Component {
             {/* TODO: Add user href link*/}
             <p className="poster">Posted by <a>{this.props.poster}</a></p>
           </div>
-          {this.state.shown}
+          {this.state.comments}
         </div>
         );
     }
@@ -35,7 +35,7 @@ class Post extends React.Component {
 
 // Constructs a comment
 export function Comment(text, name) {
-  return <div className="comment"><p>{text}</p><h2 id="poster">{name}</h2></div>;
+  return <div className="comment"><pre>{text}</pre><div className="poster">{name}</div></div>;
 }
 
 export default Post;

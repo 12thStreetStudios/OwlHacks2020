@@ -2,7 +2,7 @@
     border: solid;
     width: 95%;
     margin: 5px;
-    padding: 8px;
+    padding: 4px;
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
     height: 10rem;
@@ -49,9 +49,31 @@
 }
 
 .comment {
-  text-align: left;
   width: 80%;
   border: solid;
   height: 50px;
-  display: block;
+  margin: 2px;
+  color: black;
+  display: flex;
+  font-size: 22px;
+}
+
+.comment .poster {
+  text-align: right;
+  flex: 1;
+  height: 40%;
+  margin: 5px;
+}
+
+.comment p {
+  margin: 10px;
+  color: black;
+  text-align: left;
+  vertical-align: middle;
+  height: 30%;
+}
+
+li {
+  margin: 0px 0px -20px 0px;
+  padding: 2px;
 }

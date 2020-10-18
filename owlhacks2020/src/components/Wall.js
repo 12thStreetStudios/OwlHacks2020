@@ -18,7 +18,6 @@ class Wall extends React.Component {
     const listPosts = this.state.posts.map((p, i) =>
       <li key={i}>
         {p}
-        {p.comments}
       </li>
      );
     return (
