@@ -2,10 +2,11 @@
     border: solid;
     width: 99%;
     margin-bottom: 6px;
+    padding-bottom: 25px;
 
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
-    height: 7rem;
+    height: 8rem;
     user-select: none;
     border-radius: 6px;
 }
@@ -40,6 +41,7 @@
   font-size: 20px;
   text-align: right;
   position: relative;
+  float: right;
   margin-top: -58px;
   padding-right: 10px;
 }
@@ -59,6 +61,7 @@
   border-radius: 6px;
   padding: 4px;
   padding-right: 10px;
+  margin-bottom: -20px;
 }
 
 .organization a:hover {
@@ -80,10 +83,9 @@
 
 .comment .poster {
   text-align: right;
-  flex: 1;
-  margin-bottom: 5px;
-  padding: 6px;
-  font-size: 10px;
+  padding-right: 12px;
+  margin-top: -12px;
+  font-size: 20px;
 }
 
 .comment p {
@@ -98,6 +100,7 @@
 .fakelist {
   padding: 2px;
   flex-flow: row;
+  font-size: 0px;
 }
 
 .none {
@@ -139,7 +142,7 @@
 }
 
 .post-form textarea {
-  resize: none;
+  resize: none !important;
   height: 100px;
 }
 
@@ -163,4 +166,3 @@
   float: left;
   padding: 10px;
 }
-

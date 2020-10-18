@@ -47,7 +47,7 @@ class Post extends React.Component {
                 <form action="">
                   <p className="words">Enter Comment Below: </p>
                   <input className="submitbutton" type="submit" name="Comment"/>
-                  <textarea name="comment" cols="70" rows="4"></textarea>
+                  <textarea className="post-form" name="comment"></textarea>
                 </form>
               </div>
             </div>
