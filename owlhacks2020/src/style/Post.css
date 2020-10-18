@@ -118,3 +118,8 @@
   font-weight: bold;
   margin-bottom: 3px;
 }
+
+.post-form textarea {
+  resize: none;
+  height: 100px;
+}
