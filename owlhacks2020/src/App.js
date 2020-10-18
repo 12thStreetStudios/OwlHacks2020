@@ -7,6 +7,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import ReactDOM from 'react-dom';
 
 import './style/App.css';
 import './style/Profile.css';
@@ -16,6 +17,7 @@ import Title from './components/Title'
 import Post, {Comment} from './components/Post'
 import Project from './components/Project';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
+import NewPost from './components/NewPost.js'
 
 export default function App() {
 
@@ -85,18 +87,21 @@ export default function App() {
   );
 }
 
+
+
 function Home() {
   const {rootState, logout} = useContext(LoginContext);
   const {isAuth, thisUser, showLogin} = rootState;
+  // Add floating post button
+  function floatingMenuClick() {
+    // Show new post menu
+    ReactDOM.render(<NewPost />, document.getElementById('App'));
+    console.log("Opening New Post Form");
+  }
 
   if (isAuth)
   {
-    // Add floating post button
-    function floatingMenuClick() {
-      // Show new post menu
-      console.log("Showing New Post Menu");
-    }
-    var floatingMenu = <div className="float" onClick={floatingMenuClick}><i className="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
+    var floatingMenu = <div className="float" onClick={floatingMenuClick}><i className="fa fa-plus post-add"></i></div>;
 
     // build posts here
     var posts = [
@@ -107,13 +112,14 @@ function Home() {
     ];
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <Wall posts={posts}/>
-        </header>
-        {floatingMenu}
-      </div>
-    )
+        <div className="App" id="App">
+          {rootState.newPost}
+          <header className="App-header">
+            <Wall posts={posts}/>
+          </header>
+          {floatingMenu}
+        </div>
+      );
   }
   else {
     return Login();
