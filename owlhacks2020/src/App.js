@@ -194,7 +194,7 @@ function Profile(username) {
   Axios.get("https://tss-api.srnd.net/user/getUserByID")
   // TODO: get User data
 
-  const user = { name: 'Johnny', email: 'johnny@comcast.net', group: 'Oregon Orators'};
+  const user = { name: 'Johnny Apple', email: 'johnny@comcast.net', organization: 'Oregon Orators'};
   const outputJSX = Object.keys(user).map( (k,v) =>
     <div key={k}><p>{k}: {user[k]}</p></div>
   );
