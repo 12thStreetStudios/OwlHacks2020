@@ -20,7 +20,6 @@ import Organizations from './components/Organizations';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 import NewPost from './components/NewPost.js'
 import About from './components/About'
-import Axios from 'axios';
 
 const Axios = axios.create({baseURL: "https://tss-api.srnd.net/"})
 const API_KEY = "BpLnfgDsc2WD8F2qNfHK5a84jjJkwzDkh9h2fhfUVuS9jZ8uVbhV3vC5AWX39IVU";
