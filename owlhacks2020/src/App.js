@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import FormData from 'form-data';
 
 import './style/App.css';
 import './style/Profile.css';
@@ -65,12 +66,12 @@ export default function App() {
           </Route>
           <Route path="/profile">
             <LoginContextProvider>
-              <Profile />
+              <Profile username="seanmitch"/>
             </LoginContextProvider>
           </Route>
           <Route path="/">
             <LoginContextProvider>
-              < Home/>
+              <Home />
             </LoginContextProvider>
           </Route>
         </Switch>
@@ -98,9 +99,9 @@ function Home() {
     // build posts here
     var posts = [
       // I really hate how comments work, and I wrote it
-      <Post title="First Post" poster="Jimmy" organization="12th Street" comments={[Comment('Cool Post', 'Russell'), Comment('Awesome', 'Alex')]}/>,
+      <Post title="First Post" poster="Jimmy" organization="Moderator" comments={[Comment('Cool Post', 'Russell'), Comment('Awesome', 'Alex')]}/>,
       <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>,
-      <Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>
+      <Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="12th Street Games"/>
     ];
 
     return (
@@ -193,19 +194,20 @@ function Users() {
 }
 
 class Profile extends React.Component {
-  // TODO: get User data
+// fetch user data
 getUserByName = async (name) => {
   console.log("Getting User by name");
-  var user = await Axios.post('user/getUserByName',{
-
-    apikey: API_KEY,
-    apitoken: API_TOKEN,
-    userid: name
-  },{ headers: {
-    'Content-Type': 'multipart/form-data'
+  const formData = new FormData();
+  formData.append("apikey", API_KEY)
+  formData.append("apitoken", API_TOKEN)
+  formData.append("username", name)
+  var user = await Axios.post('user/getUserByName', {data: formData, headers: {
+    'Content-Type': 'multipart/form-data',
+    'Access-Control-Allow-Origin' : '*'
   }}).catch(function(e) {responseError(e);});
   if (user) {
-    this.setState({...this.state, data: user.data.response});
+    console.log(user.data);
+    this.state = {username: name, data: user.data.response};
     return user.data;
   } else {
       return {response: "error"};
@@ -216,9 +218,9 @@ getUserByName = async (name) => {
     super(props);
     this.state = {
       username: props.username,
-      data: ""
+      data: ''
     }
-    this.getUserByName("seanmitch");
+    this.getUserByName(this.state.username);
   }
   // TODO: search database function
 
