@@ -7,6 +7,7 @@
     background-color: rgb(215,215,204, 0.6);
     height: 10rem;
     display: block;
+    user-select: none;
 }
 
 .post:hover {
@@ -56,6 +57,7 @@
   color: black;
   display: flex;
   font-size: 22px;
+  user-select: none;
 }
 
 .comment .poster {
