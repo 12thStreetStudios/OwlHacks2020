@@ -135,3 +135,15 @@
 .postbutton {
   align-self: right;
 }
+
+.words {
+  padding: 8px;
+  text-align: left;
+  color: black;
+}
+
+.submitbutton {
+  background-color: black;
+  float: left;
+  padding: 10px;
+}

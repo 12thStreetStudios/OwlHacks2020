@@ -14,7 +14,7 @@ class Post extends React.Component {
     }
 
     onClick = () => {
-      if (this.state.comments.length > 0 && this.state.expanded === 'none'){
+      if (this.state.expanded === 'none'){
         this.setState({...this.state, expanded: 'expanded'});
       } else {
         this.setState({...this.state, expanded: 'none'})
@@ -43,9 +43,9 @@ class Post extends React.Component {
             <div>
               <body className={this.state.expanded}>
                 <form action="">
-                  <p>Enter Comment Below: </p>
-                  <textarea name="comment" cols="20" rows="4"></textarea>
-                  <input type="submit" name="Comment"/>
+                  <p className="words">Enter Comment Below: </p>
+                  <input className="submitbutton" type="submit" name="Comment"/>
+                  <textarea name="comment" cols="70" rows="4"></textarea>
                 </form>
               </body>
             </div>
