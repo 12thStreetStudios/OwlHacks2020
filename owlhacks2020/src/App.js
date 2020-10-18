@@ -27,24 +27,13 @@ export default function App() {
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Wall</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/orgs">Organizations</Link>
-            </li>
-            <li>
-              <Link to="/user">Users</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
+              <Link to="/"> Wall </Link>
+              <Link to="/login"> Login </Link>
+              <Link to="/about"> About </Link>
+              <Link to="/orgs"> Organizations </Link>
+              <Link to="/user"> Users </Link>
+              <Link to="/profile"> Profile </Link>
+            
           </ul>
         </nav>
 
