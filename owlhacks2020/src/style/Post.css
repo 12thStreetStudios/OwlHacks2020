@@ -88,3 +88,28 @@
 .expanded {
   display: block;
 }
+
+.post-form {
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+  border-radius: 3px;
+  box-shadow: 0 1px rgba(255, 255, 255, .2) inset, 0 2px 2px -1px rgba(0, 0, 0, .3);
+}
+
+.post-form h1{
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.post-form .form-control {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.post-form .form-control label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
