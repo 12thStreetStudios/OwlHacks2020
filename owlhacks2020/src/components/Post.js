@@ -37,19 +37,19 @@ class Post extends React.Component {
           </div>
           <div className="comment-block">
             <div key={this.props.poster + this.state.id} className={this.state.expanded}>
-              {this.state.comments}
+              <ul>
+                {this.state.comments}
+              </ul>
             </div>
-            <div className="postbutton" onClick={this.onClick}>
-
-            </div>
+            <div className="postbutton" onClick={this.onClick}></div>
             <div>
-              <body className={this.state.expanded}>
+              <div className={this.state.expanded}>
                 <form action="">
                   <p className="words">Enter Comment Below: </p>
                   <input className="submitbutton" type="submit" name="Comment"/>
                   <textarea name="comment" cols="70" rows="4"></textarea>
                 </form>
-              </body>
+              </div>
             </div>
           </div>
           </div>
@@ -59,7 +59,7 @@ class Post extends React.Component {
 
 // Constructs a comment
 export function Comment(text, name) {
-  return <div className="comment"><pre>{text}</pre><div className="poster">{name}</div></div>;
+  return <div className="comment">{text}<div className="poster">By: {name}</div></div>;
 }
 
 export default Post;
