@@ -6,6 +6,7 @@
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
     height: 10rem;
+    display: block;
 }
 
 .post:hover {
@@ -47,10 +48,10 @@
   text-decoration: underline;
 }
 
-.commentContainer {
-  width: 80%;
-  border: solid;
-}
 .comment {
   text-align: left;
+  width: 80%;
+  border: solid;
+  height: 50px;
+  display: block;
 }

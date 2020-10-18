@@ -4,46 +4,38 @@ import '../style/Post.css'
 class Post extends React.Component {
     constructor(props) {
       super(props);
+      const c = (props.comments) ? (props.comments.map((c,i) =>
+        <li key={i}>
+          {c}
+        </li>
+      )) : ("");
+
       this.state = {
         // Comments should be a table like {text: "comment", name: "author"}
-        comments: props.comments || [],
-        shown: []
+        comments: c,
+        expanded: false
       }
-    }
-
-    expandComments() {
-      // TODO: try to fetch newest comments before expanding
-      var allComments = [];
-      for (var i=0; i<this.state.comments.length; i++) {
-        allComments.push(<p className="comment">{this.state.comments.text}<h4 id="poster">{this.state.comments.name}</h4></p>);
-      }
-      this.setState({shown: allComments});
-    }
-
-    hideComments() {
-      this.setState({shown: []});
-    }
-
-    handleClick = (e) => {
-        if (this.state.shown === []) {
-          this.expandComments();
-        } else {
-          this.hideComments();
-        }
     }
 
     render() {
         return (
-          <div onClick={this.handleClick} className="post" >
+          <div>
+          <div className="post" >
             <h3>{this.props.title}</h3>
             {/* TODO: Add organization href link */}
             <p className="organization"><a>{this.props.organization}</a></p>
             {/* TODO: Add user href link*/}
             <p className="poster">Posted by <a>{this.props.poster}</a></p>
-            {this.state.shown}
           </div>
+          {this.state.shown}
+        </div>
         );
     }
+}
+
+// Constructs a comment
+export function Comment(text, name) {
+  return <div className="comment"><p>{text}</p><h2 id="poster">{name}</h2></div>;
 }
 
 export default Post;

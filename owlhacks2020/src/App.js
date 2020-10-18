@@ -5,7 +5,7 @@ import './style/App.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 import Title from './components/Title'
-import Post from './components/Post'
+import Post, {Comment} from './components/Post'
 import Project from './components/Project';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 
@@ -28,13 +28,15 @@ function Home() {
       // Show new post menu
       console.log("Showing New Post Menu");
     }
-    var floatingMenu = <div class="float" onClick={floatingMenuClick}><i className="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
+    var floatingMenu = <div className="float" onClick={floatingMenuClick}><i className="fa fa-plus post-add" onClick={floatingMenuClick}></i></div>;
 
     // build posts here
-    var posts = [];
-    posts.push(<Post title="First Post" poster="Jimmy" organization="12th Street"/>);
-    posts.push(<Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>);
-    posts.push(<Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>);
+    var posts = [
+      // I really hate how comments work, and I wrote it
+      <Post title="First Post" poster="Jimmy" organization="12th Street" comments={[Comment('Cool Post', 'Russell'), Comment('Awesome', 'Alex')]}/>,
+      <Post title="Need help with ReactJS" poster="Russell" organization="Bad Company"/>,
+      <Post title="Want to work on C++? We are game devs!" poster="Jimmy" organization="Philadelphia Phillies"/>
+    ];
 
     return (
       <div className="App">

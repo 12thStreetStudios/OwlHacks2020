@@ -14,10 +14,16 @@ class Wall extends React.Component {
 
   // render override
   render(){
-    const renderPosts = this.state.posts.map(item => (<div className="post">{item}</div>));
+    // Something about list stability
+    const listPosts = this.state.posts.map((p, i) =>
+      <li key={i}>
+        {p}
+        {p.comments}
+      </li>
+     );
     return (
       <div className="wall">
-        {renderPosts}
+        {listPosts}
       </div>
     );
   }
