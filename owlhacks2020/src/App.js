@@ -8,6 +8,7 @@ import {
   useParams
 } from "react-router-dom";
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 import './style/App.css';
 import './style/Profile.css';
@@ -21,6 +22,9 @@ import NewPost from './components/NewPost.js'
 import About from './components/About'
 import Axios from 'axios';
 
+const Axios = axios.create({baseURL: "https://tss-api.srnd.net/"})
+const API_KEY = "BpLnfgDsc2WD8F2qNfHK5a84jjJkwzDkh9h2fhfUVuS9jZ8uVbhV3vC5AWX39IVU";
+const API_TOKEN = "WSP2NcHciWvqZTa2N95RxRTZHWUsaD6HEdz0ThbXfQ6pYSQ3n267l1VQKGNbSuJE9fQbzONJAAwdCxmM8BIabKERsUhPNmMmdf2eSJyYtqwcFiUILzXv2fcNIrWO7sTo";
 
 export default function App() {
   return (
@@ -189,23 +193,57 @@ function Users() {
   );
 }
 
-function Profile(username) {
-  // TODO: search database function
-  Axios.get("https://tss-api.srnd.net/user/getUserByID")
+class Profile extends React.Component {
   // TODO: get User data
+getUserByName = async (name) => {
+  console.log("Getting User by name");
+  var user = await Axios.post('user/getUserByName',{
 
-  const user = { name: 'Johnny Apple', email: 'johnny@comcast.net', organization: 'Oregon Orators'};
-  const outputJSX = Object.keys(user).map( (k,v) =>
-    <div key={k}><p>{k}: {user[k]}</p></div>
-  );
-  return (
-    <div className="profile-page">
-      {outputJSX}
-    </div>
-  );
+    apikey: API_KEY,
+    apitoken: API_TOKEN,
+    userid: name
+  },{ headers: {
+    'Content-Type': 'multipart/form-data'
+  }}).catch(function(e) {responseError(e);});
+  if (user) {
+    this.setState({...this.state, data: user.data.response});
+    return user.data;
+  } else {
+      return {response: "error"};
+  }
+}
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: props.username,
+      data: ""
+    }
+    this.getUserByName("seanmitch");
+  }
+  // TODO: search database function
+
+  render(){
+    return (
+      <div className="profile-page">
+        {this.state.data}
+      </div>
+    );
+  }
+
 }
 
 function Username() {
   let { userID } = useParams();
   return Profile(userID);
+}
+
+function responseError(e) {
+  if (e.response) {
+    console.log(e.response);
+  } else if (e.request) {
+    console.log(e.request);
+  } else {
+    console.log("Error ",e.message);
+  }
 }
