@@ -1,6 +1,7 @@
 import React, {createContext} from 'react';
 import axios from 'axios';
 import '../style/Login.css';
+import { Redirect } from 'react-router-dom';
 
 // Don't know why they need this
 export const LoginContext = createContext();
