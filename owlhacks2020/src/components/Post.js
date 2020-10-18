@@ -4,12 +4,13 @@ import '../style/Post.css'
 class Post extends React.Component {
     constructor(props) {
       super(props);
-      const c = (props.comments) ? (props.comments.map((c,i) =><li className='fakelist' key={i}>{c}</li>)) : ("");
+      const c = (props.comments) ? (props.comments.map((c,i) =><div className='fakelist' key={i}>{c}<br/></div>)) : ("");
 
       this.state = {
         // Comments should be a table like {text: "comment", name: "author"}
         comments: c,
-        expanded: "none"
+        expanded: "none",
+        id: props.id || 0
       }
     }
 
@@ -23,10 +24,10 @@ class Post extends React.Component {
 
     render() {
         return (
-          <div>
+          <div className="flexbox">
             <div className="post" onClick={this.onClick}>
             <h3>{this.props.title}</h3>
-              <body>
+            <body>
               {/* TODO: Add organization href link */}
               <p className="organization"><a>{this.props.organization}</a></p>
               {/* TODO: Add user href link*/}
@@ -34,11 +35,12 @@ class Post extends React.Component {
               <p className="commentCount">Comments: {this.state.comments.length}</p>
             </body>
           </div>
-            <ul className={this.state.expanded}>
+          <div className="comment-block">
+            <div key={this.props.poster + this.state.id} className={this.state.expanded}>
               {this.state.comments}
-            </ul>
+            </div>
             <div className="postbutton" onClick={this.onClick}>
-            
+
             </div>
             <div>
               <body className={this.state.expanded}>
@@ -49,6 +51,7 @@ class Post extends React.Component {
                 </form>
               </body>
             </div>
+          </div>
           </div>
         );
     }
