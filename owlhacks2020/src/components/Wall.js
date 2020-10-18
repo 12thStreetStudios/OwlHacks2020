@@ -1,5 +1,4 @@
 import React from 'react';
-import Post from './Post.js';
 import '../style/wall.css'
 import '../style/Post.css'
 

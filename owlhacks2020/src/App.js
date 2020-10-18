@@ -13,11 +13,12 @@ import './style/App.css';
 import './style/Profile.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
-import Title from './components/Title'
 import Post, {Comment} from './components/Post'
 import Project from './components/Project';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 import NewPost from './components/NewPost.js'
+import About from './components/About'
+
 
 export default function App() {
 
@@ -58,7 +59,7 @@ export default function App() {
           </Route>
           <Route path="/about">
             <LoginContextProvider>
-              <About />
+              <AboutUs />
             </LoginContextProvider>
           </Route>
           <Route path="/orgs">
@@ -127,14 +128,16 @@ function Home() {
 }
 
 function Signin() {
-  const {rootState, logout} = useContext(LoginContext);
-  const {isAuth, thisUser, showLogin} = rootState;
+  const {rootState} = useContext(LoginContext);
+  const {showLogin} = rootState;
 
   return  showLogin ? <Login /> : <Register />
 }
 
-function About() {
-  return(<h1>About Page.</h1>);
+function AboutUs() {
+  return (
+    <About />
+  );
 }
 
 function Organizations() {
@@ -144,15 +147,6 @@ function Organizations() {
   return (
     <div>
       <h2>Organization</h2>
-
-      <ul>
-        <li>
-          <Link to={`${match.url}/12th-street-studios`}>12th-street-studios</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/the-other-guys`}>the-other-guys</Link>
-        </li>
-      </ul>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
@@ -180,18 +174,6 @@ function Users() {
   return (
     <div>
       <h2>Users</h2>
-
-      <ul>
-        <li>
-          <Link to={`${match.url}/russell`}>Russell</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/sean`}>Sean</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/jimmy`}>Jimmy</Link>
-        </li>
-      </ul>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
