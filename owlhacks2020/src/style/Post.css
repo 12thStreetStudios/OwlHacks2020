@@ -5,7 +5,7 @@
     padding: 4px;
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
-    height: 10rem;
+    height: 7rem;
     display: block;
     user-select: none;
 }
@@ -14,17 +14,22 @@
   background-color: darkblue;
 }
 
+.pos:onclick {
+  height: 7rem;
+}
+
 .post h3 {
   text-align: left;
   float: left;
   vertical-align: top;
   color: black;
   font-weight: bold;
+  font-size: 16;
 }
 
 .poster {
   color: black;
-  font-size: 16;
+  font-size: 6;
   text-align: left;
   clear: both;
 }
@@ -65,7 +70,7 @@
   flex: 1;
   height: 40%;
   margin: 5px;
-  font-size: 32px;
+  font-size: 20px;
 }
 
 .comment p {

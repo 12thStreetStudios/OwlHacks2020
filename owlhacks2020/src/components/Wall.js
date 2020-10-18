@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/wall.css'
+import '../style/Wall.css'
 import '../style/Post.css'
 
 /* Pink Floyd - The Wall */

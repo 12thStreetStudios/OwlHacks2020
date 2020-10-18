@@ -21,7 +21,6 @@ import About from './components/About'
 
 
 export default function App() {
-
   return (
     <Router>
       <div>
@@ -33,14 +32,12 @@ export default function App() {
               <Link to="/orgs"> Organizations </Link>
               <Link to="/user"> Users </Link>
               <Link to="/profile"> Profile </Link>
-            
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-
           <Route path="/Signin">
             <LoginContextProvider>
               <Signin />
@@ -137,7 +134,6 @@ function Orgs() {
 
   return (
     <div>
-      <h2>Organization</h2>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
@@ -148,7 +144,7 @@ function Orgs() {
           <Organization />
         </Route>
         <Route path={match.path}>
-        <h3>Search User:
+        <h3>Search Organization Name:
           <input type="text" name="user" size="15" />
         </h3>
         </Route>
@@ -166,7 +162,6 @@ function Users() {
 
   return (
     <div>
-      <h2>Users</h2>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
