@@ -12,9 +12,8 @@ import './style/App.css';
 import './style/Profile.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
-import Title from './components/Title'
 import Post, {Comment} from './components/Post'
-import Project from './components/Project';
+
 import Wall from './components/Wall' // HOW CAN I, IMPORT THE WALL!
 import About from './components/About'
 
@@ -87,8 +86,8 @@ export default function App() {
 }
 
 function Home() {
-  const {rootState, logout} = useContext(LoginContext);
-  const {isAuth, thisUser, showLogin} = rootState;
+  const {rootState} = useContext(LoginContext);
+  const {isAuth} = rootState;
 
   if (isAuth)
   {
@@ -122,14 +121,16 @@ function Home() {
 }
 
 function Signin() {
-  const {rootState, logout} = useContext(LoginContext);
-  const {isAuth, thisUser, showLogin} = rootState;
+  const {rootState} = useContext(LoginContext);
+  const {showLogin} = rootState;
 
   return  showLogin ? <Login /> : <Register />
 }
 
 function AboutUs() {
-  return(<About />);
+  return (
+    <About />
+  );
 }
 
 function Organizations() {
@@ -139,15 +140,6 @@ function Organizations() {
   return (
     <div>
       <h2>Organization</h2>
-
-      <ul>
-        <li>
-          <Link to={`${match.url}/12th-street-studios`}>12th-street-studios</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/the-other-guys`}>the-other-guys</Link>
-        </li>
-      </ul>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
