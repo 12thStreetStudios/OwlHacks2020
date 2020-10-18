@@ -1,6 +1,13 @@
 import React, {useContext} from 'react';
-import ReactDOM from 'react-dom';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+
 import './style/App.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
@@ -9,11 +16,63 @@ import Post, {Comment} from './components/Post'
 import Project from './components/Project';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 
-function App() {
+export default function App() {
+  
   return (
-    <LoginContextProvider>
-      <Home/>
-    </LoginContextProvider>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Wall</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/orgs">Organizations</Link>
+            </li>
+            <li>
+              <Link to="/user">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+            
+          <Route path="/Signin">
+            <LoginContextProvider>
+              <Signin />
+            </LoginContextProvider>
+          </Route>
+          <Route path="/about">
+            <LoginContextProvider>
+              <About />
+            </LoginContextProvider>
+          </Route>
+          <Route path="/orgs">
+            <LoginContextProvider>
+              <Organizations />
+            </LoginContextProvider>
+          </Route>
+          <Route path="/user">
+            <LoginContextProvider>
+              <Users />
+            </LoginContextProvider>
+          </Route>
+          <Route path="/">
+            <LoginContextProvider>
+              < Home/>
+            </LoginContextProvider>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
@@ -45,13 +104,97 @@ function Home() {
         </header>
         {floatingMenu}
       </div>
-    );
+    )
   }
-  else if (showLogin) {
-    return <Login/>
-  } else {
-    return <Register/>
+  else {
+    return Login();
   }
 }
 
-export default App;
+function Signin() {
+  const {rootState, logout} = useContext(LoginContext);
+  const {isAuth, thisUser, showLogin} = rootState;
+
+  return  showLogin ? <Login /> : <Register />
+}
+
+function About() {
+  return(<h1>About Page.</h1>);
+}
+
+function Organizations() {
+  
+  let match = useRouteMatch();
+
+  return (
+    <div>
+      <h2>Organization</h2>
+
+      <ul>
+        <li>
+          <Link to={`${match.url}/12th-street-studios`}>12th-street-studios</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/the-other-guys`}>the-other-guys</Link>
+        </li>
+      </ul>
+
+      {/* The Topics page has its own <Switch> with more routes
+          that build on the /topics URL path. You can think of the
+          2nd <Route> here as an "index" page for all topics, or
+          the page that is shown when no topic is selected */}
+      <Switch>
+        <Route path={`${match.path}/:organizationID`}>
+          <Organization />
+        </Route>
+        <Route path={match.path}>
+          <h3>Please select an Organization.</h3>
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function Organization() {
+  let { organizationID } = useParams();
+  return <h3>Requested organization ID: {organizationID}</h3>;
+}
+function Users() {
+  let match = useRouteMatch();
+
+  return (
+    <div>
+      <h2>Users</h2>
+
+      <ul>
+        <li>
+          <Link to={`${match.url}/russell`}>Russell</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/sean`}>Sean</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/jimmy`}>Jimmy</Link>
+        </li>
+      </ul>
+
+      {/* The Topics page has its own <Switch> with more routes
+          that build on the /topics URL path. You can think of the
+          2nd <Route> here as an "index" page for all topics, or
+          the page that is shown when no topic is selected */}
+      <Switch>
+        <Route path={`${match.path}/:userID`}>
+          <Username />
+        </Route>
+        <Route path={match.path}>
+          <h3>Please select a Username.</h3>
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function Username() {
+  let { userID } = useParams();
+  return <h3>Requested user ID: {userID}</h3>;
+}
