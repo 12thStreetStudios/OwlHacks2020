@@ -38,6 +38,9 @@ export default function App() {
             <li>
               <Link to="/user">Users</Link>
             </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
           </ul>
         </nav>
 
@@ -63,6 +66,11 @@ export default function App() {
           <Route path="/user">
             <LoginContextProvider>
               <Users />
+            </LoginContextProvider>
+          </Route>
+          <Route path="/profile">
+            <LoginContextProvider>
+              <Profile />
             </LoginContextProvider>
           </Route>
           <Route path="/">
@@ -99,7 +107,7 @@ function Home() {
 
     return (
       <div className="App">
-        <header className="App-header">        
+        <header className="App-header">
           <Wall posts={posts}/>
         </header>
         {floatingMenu}
@@ -190,6 +198,22 @@ function Users() {
           <h3>Please select a Username.</h3>
         </Route>
       </Switch>
+    </div>
+  );
+}
+
+function Profile(username) {
+  // TODO: search database function
+
+  // TODO: get User data
+
+  const user = { name: 'Johnny', email: 'johnny@comcast.net', group: 'Oregon Orators'};
+  const outputJSX = Object.keys(user).map( (k,v) =>
+    <div><p>{k}: {user[k]}</p></div>
+  );
+  return (
+    <div className="userPage">
+      {outputJSX}
     </div>
   );
 }
