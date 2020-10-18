@@ -14,7 +14,7 @@ import './style/Profile.css';
 
 import {LoginContextProvider, LoginContext, Login, Register} from'./components/Login.js'
 import Post, {Comment} from './components/Post'
-import Project from './components/Project';
+import Organizations from './components/Organizations';
 import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
 import NewPost from './components/NewPost.js'
 import About from './components/About'
@@ -64,7 +64,7 @@ export default function App() {
           </Route>
           <Route path="/orgs">
             <LoginContextProvider>
-              <Organizations />
+              <Orgs />
             </LoginContextProvider>
           </Route>
           <Route path="/user">
@@ -140,7 +140,7 @@ function AboutUs() {
   );
 }
 
-function Organizations() {
+function Orgs() {
 
   let match = useRouteMatch();
 
