@@ -14,7 +14,8 @@ import {LoginContextProvider, LoginContext, Login, Register} from'./components/L
 import Title from './components/Title'
 import Post, {Comment} from './components/Post'
 import Project from './components/Project';
-import Wall from './components/Wall.js' // HOW CAN I, IMPORT THE WALL!
+import Wall from './components/Wall' // HOW CAN I, IMPORT THE WALL!
+import About from './components/About'
 
 export default function App() {
 
@@ -52,7 +53,7 @@ export default function App() {
           </Route>
           <Route path="/about">
             <LoginContextProvider>
-              <About />
+              <AboutUs />
             </LoginContextProvider>
           </Route>
           <Route path="/orgs">
@@ -118,8 +119,8 @@ function Signin() {
   return  showLogin ? <Login /> : <Register />
 }
 
-function About() {
-  return(<h1>About Page.</h1>);
+function AboutUs() {
+  return(<About />);
 }
 
 function Organizations() {
@@ -165,18 +166,6 @@ function Users() {
   return (
     <div>
       <h2>Users</h2>
-
-      <ul>
-        <li>
-          <Link to={`${match.url}/russell`}>Russell</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/sean`}>Sean</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/jimmy`}>Jimmy</Link>
-        </li>
-      </ul>
 
       {/* The Topics page has its own <Switch> with more routes
           that build on the /topics URL path. You can think of the
