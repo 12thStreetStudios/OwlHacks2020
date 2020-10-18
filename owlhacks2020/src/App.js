@@ -144,8 +144,11 @@ function Orgs() {
           <Organization />
         </Route>
         <Route path={match.path}>
-        <h3>Search Organization Name:
-          <input type="text" name="user" size="15" />
+        <h3 className="search">Search Organization:
+          <form action="">
+            <input type="text" name="user" size="12" />
+            <input type="submit" name="button" value="search" />
+          </form>
         </h3>
         </Route>
       </Switch>
@@ -172,8 +175,11 @@ function Users() {
           <Username />
         </Route>
         <Route path={match.path}>
-            <h3>Search User:
-              <input type="text" name="user" size="15" />
+            <h3 className="search">Search User:
+              <form action="">  
+                <input type="text" name="user" size="12" />
+                <input type="submit" name="button" value="Search" />
+              </form>
             </h3>
         </Route>
       </Switch>
@@ -199,5 +205,5 @@ function Profile(username) {
 
 function Username() {
   let { userID } = useParams();
-  return <h3>Requested user ID: {userID}</h3>;
+  return Profile(userID);
 }
