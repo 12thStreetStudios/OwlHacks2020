@@ -1,8 +1,8 @@
 .post {
     border: solid;
-    width: 95%;
-    margin: 5px;
-    padding: 4px;
+    width: 100%;
+    margin-bottom: 6px;
+    
     /*Pale Yellow*/
     background-color: rgb(215,215,204, 0.6);
     height: 7rem;
@@ -24,10 +24,17 @@
   vertical-align: top;
   color: black;
   font-weight: bold;
-  font-size: 16;
+  font-size: 10;
 }
 
 .poster {
+  color: black;
+  font-size: 6;
+  text-align: left;
+  clear: both;
+}
+
+.commentCount {
   color: black;
   font-size: 6;
   text-align: left;
@@ -57,11 +64,12 @@
 .comment {
   width: 80%;
   border: solid;
-  height: 50px;
-  margin: 2px;
+  margin-top: 10px;
+  height: 30px;
+ 
   color: black;
   display: flex;
-  font-size: 22px;
+  font-size: 16px;
   user-select: none;
 }
 
@@ -70,16 +78,16 @@
   flex: 1;
   height: 40%;
   margin: 5px;
-  font-size: 20px;
+  font-size: 10px;
 }
 
 .comment p {
-  margin: 10px;
   color: black;
   text-align: left;
   vertical-align: middle;
-  height: 30%;
-  font-size: 24px;
+  
+
+  font-size: 10px;
 }
 
 .fakelist {
@@ -122,4 +130,8 @@
 .post-form textarea {
   resize: none;
   height: 100px;
+}
+
+.postbutton {
+  align-self: right;
 }
